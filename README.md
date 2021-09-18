@@ -14,7 +14,7 @@
 
 - <img src="https://avatars.githubusercontent.com/u/9651900?s=60&amp;v=4" alt="@su37josephxia" size="20" height="40" width="40" data-view-component="true" class="avatar-user avatar avatar-small"> 全栈然叔  [【掘金】](https://juejin.cn/user/1978776660216136) [【GitHub】](https://github.com/su37josephxia) 
 - <img src="https://avatars.githubusercontent.com/u/867580?v=4" alt="@ezshine" size="20" height="40" width="40" data-view-component="true" class="avatar-user avatar avatar-small"> 大帅老猿  [【掘金】](https://juejin.cn/user/2955079655898093) [【GitHub】](https://github.com/ezshine) 
-
+- <img src="https://avatars.githubusercontent.com/u/33857444?s=400&u=32b9086420fece4ba7d4295d4f8cf65dd51ec058&v=4" alt="57code" size="20" height="40" width="40" data-view-component="true" class="avatar-user avatar avatar-small"> 杨村长  [【掘金】](https://juejin.cn/user/325111174926350?share_token=e81b264d-2595-4fd7-902f-155cf9b93b64) [【GitHub】](https://github.com/57code) 
 
 
 
@@ -37,8 +37,13 @@
 
 | 10月22日 |      |      |
 | -------- | ---- | ---- |
-|          |      |      |
-|          |      |      |
+|   9:00 - 12:00  |  1. 框架设计理念 2. mini-vue：初始化和响应式    |  杨村长  |
+|   12:00 - 13:00  |  休息    |    |
+|   13:00 - 14:00       | mini-vue：更新     |  杨村长    |
+|   14:00 - 15:00       | SFC原理解析     |  杨村长    |
+|   15:00 - 16:00       | JSX原理解析     |  杨村长    |
+|   16:00 - 17:00       | 组件化开发实践     |  杨村长    |
+|   17:00 - 18:00       | MVVM     |  杨村长    |
 
 | 10月23日            |                        |          |
 | ------------------- | ---------------------- | -------- |
