@@ -37,8 +37,7 @@
 |11:00 - 12:00|开发工具：webpack&rollup&vite 原理及应用|崔效瑞|
 |1:00 - 2:00|开发工具：webpack&rollup&vite 原理及应用|崔效瑞|
 |2:00 - 3:30|单测&组件测试&e2e&git hook & Puppeteer & eslint |崔效瑞|
-|3:30 - 5:45|webpack & rollup & esbuild 编写插件及原理|崔效瑞|
-|5:45 - 6:00|工具的版本控制 & 研发 - 数据统计|崔效瑞|
+|3:30 - 6:00|webpack & rollup & esbuild 编写插件及原理|崔效瑞|
 
 
 
