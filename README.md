@@ -14,6 +14,7 @@
 
 - <img src="https://avatars.githubusercontent.com/u/9651900?s=60&amp;v=4" alt="@su37josephxia" size="20" height="40" width="40" data-view-component="true" class="avatar-user avatar avatar-small"> 全栈然叔  [【掘金】](https://juejin.cn/user/1978776660216136) [【GitHub】](https://github.com/su37josephxia) 
 - <img src="https://avatars.githubusercontent.com/u/867580?v=4" alt="@ezshine" size="20" height="40" width="40" data-view-component="true" class="avatar-user avatar avatar-small"> 大帅老猿  [【掘金】](https://juejin.cn/user/2955079655898093) [【GitHub】](https://github.com/ezshine) 
+- <img src="https://avatars.githubusercontent.com/u/12064746?v=4" alt="@ezshine" size="20" height="40" width="40" data-view-component="true" class="avatar-user avatar avatar-small"> 阿崔cxr  [【掘金】](https://juejin.cn/user/2101921961483374) [【GitHub】](https://github.com/cuixiaorui) 
 
 
 
@@ -31,8 +32,14 @@
 
 | 10月21日 |      |      |
 |-|-|-|
-|9:00 - 12:00|1. 脚手架的实现 2. webpack & rollup & vite |崔效瑞|
-|1:00 - 18:00|1. 测试 2. 基础能力（插件的开发）|崔效瑞|
+||||
+|9:00 - 11:00|实现setup koa 的 cli 工具|崔效瑞|
+|11:00 - 12:00|开发工具：webpack&rollup&vite 原理及应用|崔效瑞|
+|1:00 - 2:00|开发工具：webpack&rollup&vite 原理及应用|崔效瑞|
+|2:00 - 3:30|单测&组件测试&e2e&git hook & Puppeteer & eslint |崔效瑞|
+|3:30 - 5:45|webpack & rollup & esbuild 编写插件及原理|崔效瑞|
+|5:45 - 6:00|工具的版本控制 & 研发 - 数据统计|崔效瑞|
+
 
 
 | 10月22日 |      |      |
