@@ -4,7 +4,9 @@
 
 ## 准备工作
 
-
+- 准备一个Github账号、熟悉Git操作
+- Mysql及Mongo开发环境 (For Day01 )
+- 
 
 
 
@@ -17,4 +19,8 @@
 | 13:30 ~ 15:00 | 持久化mysql/mongodb/Restful实战 | 全栈然叔 |
 | 15:00 ~ 17:00 | 鉴权session/token/Oauth2.0实战  | 全栈然叔 |
 | 17:00 ~ 18:00 | rpc/cdn/log/监控                | 全栈然叔 |
+
+
+
+# 交流群
 
