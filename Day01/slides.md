@@ -45,24 +45,165 @@ NodeJS与服务器
 - buffer与字符集
 - http
 - stream
+
 - 实战：手写cli工具
 
+---
+
+# 基础API
+## 核心API - 无需require
+- buffer
+- module
+- process
+## 内置API - 需要require 无需install
+- os
+- fs
+- path
+- http
+- event
+
+---
+
+# fs文件系统
+
+- 同步读取
+- 异步读取
+- promisify
+
+
+---
+
+# Buffer缓冲区
+
+  Buffer - 用于在 TCP 流、文件系统操作、以及其他上下文中与八位字节流进行交互。	八位字节组成的数组，可以有效的在JS中存储二进制数据
+
+
+---
+
+# http服务
+- 静态页面
+- JSON数据
+- 图片
+
+---
+
+# stream流
+
+Stream 是一个抽象接口，Node 中有很多对象实现了这个接口。例如，对http 服务器发起请求的request 对象就是一个 Stream，还有stdout（标准输出）。
+
+所有的 Stream 对象都是 EventEmitter 的实例。常用的事件有：
+
+data - 当有数据可读时触发。
+
+end - 没有更多的数据可读时触发。
+
+error - 在接收和写入过程中发生错误时触发。
+
+finish - 所有数据已被写入到底层系统时触发。
 
 ---
 
 # Part02   持久化技术
-- 持久化mysql
+
+“数据持久化就是将内存中的数据模型转换为存储模型,以及将存储模型转换为内存中的数据模型的统称. 数据模型可以是任何数据结构或对象模型,存储模型可以是关系模型、XML、二进制流等。
+
+- mysql
 - mongodb
 - Restful服务
 
 ---
+
+# Restful服务
+### RESTful API
+
+- Representational State Transfer翻译过来是"表现层状态转化"，它是一种互联网软件的架构原则。因此复合REST风格的Web API设计，就称它为RESTful API
+
+- RESTful特征：
+
+  - 每一个URI代表一种资源(Resources)，比如：`http://kaikeba.com/courses`；
+
+  - 客户端和服务器之间，传递这种资源的某种表现层，比如：`http://kaikeba.com/courses/web`；
+
+  - 客户端通过HTTP动词，对服务器端资源进行操作，实现"表现层状态转化"，比如：
+
+    `POST http://kaikeba.com/courses`
+
+---
+
+
+
+# HTTP动词：表示一个动作
+
+  - GET：读取（Read）
+  - POST：新建（Create）
+  - PUT：更新（Update）
+  - PATCH：更新（Update），部分更新
+  - DELETE：删除（Delete）
+
+---
+
+# 宾语：表示动作的目标对象
+
+  - 是一个名词
+
+    ```js
+    // 推荐
+    GET /users
+    // 不推荐
+    GET /getUsers
+    ```
+
+    
+
+  - 通常是复数
+
+    ```js
+    // 推荐
+    GET /users
+    GET /users/1
+    // 不推荐
+    GET /user
+    GET /user/1
+    ```
+
+---
+
+# 宾语：表示动作的目标对象
+
+  - 避免多级
+
+    ```js
+    // 推荐
+    GET /authors/12?categories=2
+    // 不推荐
+    GET /authors/12/categories/2
+    ```
+
+---
+
 
 # Part03   鉴权
 - cookie与session
 - jwt token
 - Oauth2.0实战
 
+
 ---
+
+# cookie与session
+
+
+![Snip20210919_1](https://gitee.com/josephxia/picgo/raw/master/juejin/Snip20210919_1.png)
+
+
+---
+
+# JWT TOKEN
+
+
+---
+
+
 
 # Part04   服务器端常识
 - CDN
