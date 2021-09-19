@@ -8,7 +8,7 @@ const querystring = require('querystring')
 app.use(static(__dirname + '/'));
 const config = {
     client_id: '73a4f730f2e8cf7d5fcf',
-    client_secret: '74bde1aec977bd93ac4eb8f7ab63352dbe03ce48'
+    client_secret: '7d74e26c34efd6d5c5380697281cb0eb5d6d6b6c'
 }
 
 router.get('/github/login', async (ctx) => {
@@ -21,7 +21,7 @@ router.get('/github/login', async (ctx) => {
     ctx.redirect(path);
 })
 router.get('/auth/github/callback', async (ctx) => {
-    console.log('callback..')
+    console.log('callback..', ctx.url)
     const code = ctx.query.code;
     const params = {
         client_id: config.client_id,
@@ -29,8 +29,21 @@ router.get('/auth/github/callback', async (ctx) => {
         code: code
     }
     let res = await axios.post('https://github.com/login/oauth/access_token', params)
+                                
+    console.log('login', res.data)    
     const access_token = querystring.parse(res.data).access_token
-    res = await axios.get('https://api.github.com/user?access_token=' + access_token)
+
+    // ctx.body = `登陆成功`
+
+    console.log('access_token',access_token)
+    res = await axios.get('https://api.github.com/user', {
+        headers: {
+            accept: 'application/json',
+            Authorization: `token ${access_token}`
+          }
+    })
+
+   
     console.log('userAccess:', res.data)
     ctx.body = `
         <h1>Hello ${res.data.login}</h1>
