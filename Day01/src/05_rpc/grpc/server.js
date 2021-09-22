@@ -5,7 +5,7 @@ const testProto = grpc.load(PROTO_PATH).testPackage
 
 function test(call, callback) {
   const time = new Date()
-  callback(null, {message: time.toString()})
+  callback(null, {message: '然叔666'})
 }
 
 const server = new grpc.Server();

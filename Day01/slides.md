@@ -8,6 +8,11 @@ background: https://source.unsplash.com/collection/94734566/1920x1080
 class: 'text-center'
 ---
 
+# Node答疑直播
+- 20：50 ~ 22:00
+
+---
+
 
 # 字节跳动青训营 Day01
 
@@ -25,6 +30,14 @@ NodeJS与服务器
 | 13:30 ~ 15:00 | 持久化mysql/mongodb/Restful实战 | 全栈然叔 |
 | 15:00 ~ 17:00 | 鉴权session/token/Oauth2.0实战  | 全栈然叔 |
 | 17:00 ~ 18:00 | rpc/cdn/log/监控                | 全栈然叔 |
+
+---
+
+# 练习到 11：45
+
+搭建cli基础环境
+
+
 
 ---
 
@@ -51,6 +64,7 @@ NodeJS与服务器
 ---
 
 # 基础API
+> 官方文档 http://nodejs.cn/api/
 ## 核心API - 无需require
 - buffer
 - module
@@ -109,7 +123,7 @@ finish - 所有数据已被写入到底层系统时触发。
 
 - mysql
 - mongodb
-- Restful服务
+- 通过模型自动映射Restful服务
 
 ---
 
