@@ -13,7 +13,7 @@
 
 
 - <img src="https://avatars.githubusercontent.com/u/9651900?s=60&amp;v=4" alt="@su37josephxia" size="20" height="40" width="40" data-view-component="true" class="avatar-user avatar avatar-small"> 全栈然叔  [【掘金】](https://juejin.cn/user/1978776660216136) [【GitHub】](https://github.com/su37josephxia) 
-- <img src="https://avatars.githubusercontent.com/u/867580?v=4" alt="@ezshine" size="20" height="40" width="40" data-view-component="true" class="avatar-user avatar avatar-small"> 大帅老猿  [【掘金】](https://juejin.cn/user/2955079655898093) [【GitHub】](https://github.com/ezshine) 
+- <img src="https://avatars.githubusercontent.com/u/867580?v=4" alt="@ezshine" size="20" height="40" width="40" data-view-component="true" class="avatar-user avatar avatar-small"> 大帅老猿  [【掘金】](https://juejin.cn/user/2955079655898093) [【GitHub】](https://github.com/ezshine) [【B站】](https://space.bilibili.com/422646817)
 - <img src="https://avatars.githubusercontent.com/u/12064746?v=4" alt="@ezshine" size="20" height="40" width="40" data-view-component="true" class="avatar-user avatar avatar-small"> 阿崔cxr  [【掘金】](https://juejin.cn/user/2101921961483374) [【GitHub】](https://github.com/cuixiaorui) 
 
 
