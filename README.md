@@ -2,7 +2,7 @@
 
 ## 交流群
 
-<img src="https://gitee.com/josephxia/picgo/raw/master/juejin/Snip20210923_2.png" width="300px">
+<img src="./assets/wx.png" width="300px">
 
 ## 准备工作
 
