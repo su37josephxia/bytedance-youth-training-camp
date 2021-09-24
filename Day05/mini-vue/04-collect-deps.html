@@ -1,0 +1,206 @@
+<div id="app">
+  {{title}}
+</div>
+
+<script>
+  // 1.基本结构
+  const Vue = {
+    // 扩展性
+    createRenderer({ querySelector, insert }) {
+      // 返回渲染器
+      return {
+        createApp(options) {
+          // 返回app实例
+          return {
+            mount(selector) {
+              // console.log('mount!');
+              // 1.找到宿主元素
+              const parent = querySelector(selector)
+
+              // 2.渲染页面
+              if (!options.render) {
+                //   2.1处理template：编译
+                options.render = this.compile(parent.innerHTML)
+              }
+
+              // setup和其他选项
+              if (options.setup) {
+                this.setupState = options.setup()
+              }
+              if (options.data) {
+                this.data = options.data()
+              }
+
+              // app.xxx
+              const proxy = new Proxy(this, {
+                get(target, key) {
+                  // 先从setup中取，如果取不到再从data中取
+                  if (target.setupState && key in target.setupState) {
+                    return target.setupState[key]
+                  } else {
+                    return target.data[key]
+                  }
+                },
+                set(target, key, val) {
+                  if (target.setupState && key in target.setupState) {
+                    target.setupState[key] = val
+                  } else {
+                    target.data[key] = val
+                  }
+                }
+              })
+
+              //   2.2用户直接编写render
+              this.update = effect(() => {
+                const el = options.render.call(proxy)
+
+                // 3.追加到宿主
+                parent.innerHTML = ''
+                // parent.appendChild(el)
+                insert(el, parent)
+              })
+              // this.update()
+            },
+            compile(template) {
+              // 返回一个render函数
+              // parse -> ast
+              // generate -> ast=>render
+              return function render() {
+                const h3 = document.createElement('h3')
+                h3.textContent = this.title
+                return h3
+              }
+            }
+          }
+        }
+      }
+    },
+    createApp(options) {
+      // 创建一个web平台特有渲染器
+      const renderer = Vue.createRenderer({
+        querySelector(sel) {
+          return document.querySelector(sel)
+        },
+        insert(el, parent) {
+          parent.appendChild(el)
+        }
+      })
+      return renderer.createApp(options)
+    }
+  }
+</script>
+<script>
+  // 能够拦截用户对代理对象的访问
+  // 从而在值发生变化的时候做出响应式
+  function reactive(obj) {
+    // vue2
+    // Object.defineProperty(obj, {})
+    // 缺点：性能、api、内部实现、数据结构支持
+    return new Proxy(obj, {
+      get(target, key) {
+        console.log('get key:', key);
+        // 建立依赖关系
+        track(target, key)
+        // console.log(targetMap);
+        return target[key]
+      },
+      set(target, key, val) {
+        console.log('set key:', key);
+        target[key] = val
+        // 获取依赖关系
+        // 通知更新
+        trigger(target, key)
+        // app.update()
+      }
+    })
+  }
+
+  // 建立映射关系：依赖dep - 组件更新函数
+  // vue2： 1组件有watcher
+  // vue3：创建map结构 
+  
+  // 调用effect，首先执行fn
+  const effectStack = []
+  function effect(fn) {
+    const eff = function() {
+      try {
+        effectStack.push(eff)
+        fn()
+      } finally {
+        effectStack.pop()
+      }
+    }
+    
+    // 立即调用一次
+    eff()
+
+    return eff
+  }
+
+  // { 
+  //   target1: { key: [update1, update2]} ,
+  //   target2: { key: [update1, update2]} ,
+  // }
+  // const targetMap = new WeakMap()
+  const targetMap = {}
+
+  // 建立target,key和effectStack中存储的副作用函数之间的关系
+  function track(target, key) {
+    const effect = effectStack[effectStack.length - 1]
+    // 判断target为key的对象存在不存在
+    let map = targetMap[target]
+    // targetMap.get(target)
+    if (!map) {
+      // 首次get这个target
+      map = targetMap[target] = {}
+      // targetMap.set(target, {})
+    }
+    
+    let deps = map[key]
+    if (!deps) {
+      deps = map[key] = []
+      // deps = map[key] = new Set()
+    }
+    // 映射关系建立
+    // deps.add(effect)
+    if (deps.indexOf(effect) === -1) {
+      deps.push(effect)
+    }
+  }
+
+  // 从targetMap中获取target，key对应的依赖函数并执行他们
+  function trigger(target, key) {
+    const map = targetMap[target]
+    if (map) {
+      const deps = map[key]
+
+      if (deps) {
+        deps.forEach(dep => dep())
+      }
+    }
+  }
+  
+  // const obj = reactive({foo: 'foo', bar: 'bar'})
+  // effect(() => {
+  //   // 触发响应式数据
+  //   console.log(obj.foo);
+  // })
+  // effect(() => {
+  //   console.log(obj.foo,obj.bar);
+  // })
+  // obj.foo = 'foo~~~~~~'
+
+  const app = Vue.createApp({
+    setup() {
+      // created
+      const state = reactive({
+        title: 'vue3, hello!'
+      })
+      setTimeout(() => {
+        state.title = 'hello, vue3!'
+      }, 2000)
+      return state
+    }
+  })
+  app.mount('#app')
+</script>
