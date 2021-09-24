@@ -1,0 +1,104 @@
+<div id="app">
+  {{title}}
+</div>
+
+<script>
+  // 1.基本结构
+  const Vue = {
+    // 扩展性
+    createRenderer({ querySelector, insert }) {
+      // 返回渲染器
+      return {
+        createApp(options) {
+          // 返回app实例
+          return {
+            mount(selector) {
+              // console.log('mount!');
+              // 1.找到宿主元素
+              const parent = querySelector(selector)
+
+              // 2.渲染页面
+              if (!options.render) {
+                //   2.1处理template：编译
+                options.render = this.compile(parent.innerHTML)
+              }
+
+              // setup和其他选项
+              if (options.setup) {
+                this.setupState = options.setup()
+              }
+              if (options.data) {
+                this.data = options.data()
+              }
+
+              // app.xxx
+              const proxy = new Proxy(this, {
+                get(target, key) {
+                  // 先从setup中取，如果取不到再从data中取
+                  if (target.setupState && key in target.setupState) {
+                    return target.setupState[key]
+                  } else {
+                    return target.data[key]
+                  }
+                },
+                set(target, key, val) {
+                  if (target.setupState && key in target.setupState) {
+                    target.setupState[key] = val
+                  } else {
+                    target.data[key] = val
+                  }
+                }
+              })
+
+              //   2.2用户直接编写render
+              const el = options.render.call(proxy)
+
+              // 3.追加到宿主
+              parent.innerHTML = ''
+              // parent.appendChild(el)
+              insert(el, parent)
+            },
+            compile(template) {
+              // 返回一个render函数
+              // parse -> ast
+              // generate -> ast=>render
+              return function render() {
+                const h3 = document.createElement('h3')
+                h3.textContent = this.title
+                return h3
+              }
+            }
+          }
+        }
+      }
+    },
+    createApp(options) {
+      // 创建一个web平台特有渲染器
+      const renderer = Vue.createRenderer({
+        querySelector(sel) {
+          return document.querySelector(sel)
+        },
+        insert(el, parent) {
+          parent.appendChild(el)
+        }
+      })
+      return renderer.createApp(options)
+    }
+  }
+</script>
+<script>
+  const app = Vue.createApp({
+    data() {
+      return {
+        title: 'hello, vue3!'
+      }
+    },
+    setup() {
+      // created
+      return {
+        title: 'vue3, hello!'
+      }
+    }
+  })
+  app.mount('#app')
+</script>
