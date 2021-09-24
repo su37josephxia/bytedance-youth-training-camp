@@ -1,9 +1,5 @@
 # 字节青训营
 
-## 交流群
-
-<img src="./assets/wx.png" width="300px">
-
 ## 准备工作
 
 - 准备一个Github账号、熟悉Git操作
