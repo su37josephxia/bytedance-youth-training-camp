@@ -1,0 +1,81 @@
+<div id="app">
+  {{title}}
+  <!-- <comp></comp> -->
+  <comp v-model="foo"></comp>
+  <!-- <comp :foo.sync="foo"></comp> -->
+  <!-- <comp :value="foo" @update:value="foo = $event"></comp> -->
+</div>
+
+<script src="http://unpkg.com/vue@next"></script>
+<script>
+  // app实例创建
+  // new Vue({
+  //   methods:{
+  //     onclick(){
+  //       this.xxx
+  //     }
+  //   }
+  // })
+  // 1.为什么用函数的方式？
+  // 函数：vue3，react
+  // class: Angular vue2  decorator
+  // dead code
+  // Vue.component('comp', {})
+
+  // 扩展性：自定义渲染器
+  // const renderer = Vue.createRenderer({
+  //   querySelector(){},
+  //   createElement(){}
+  // })
+  // renderer.createApp({})
+  
+  function useTitle() {
+    const state = Vue.reactive({
+      title: 'vue3, hello!'
+    })
+    setTimeout(() => {
+      state.title = 'new title'
+    })
+    return state
+  }
+
+  // react hooks
+  const app = Vue.createApp({
+    data() {
+      return {
+        title: 'hello, vue3!'
+      }
+    },
+    // mixins: [useTitle],
+    setup() {
+      // 消灭this
+      // 声明响应式数据
+      // 复用性、可读性、可维护性
+      // hook
+      const state = useTitle()
+
+      // counter
+      const counter = ref(1)
+
+      return state
+    },
+    // render() {
+    //   // vue2
+    //   return h('div', {
+    //     attrs: {
+    //       title: this.title
+    //     },
+    //   }, 'xxx')
+    //   // vue3
+    //   return Vue.h('div', {
+    //     title: this.title,
+    //     foo: this.title,
+    //     onMyClick() {}
+    //   }, 'xxx')
+    // }
+  })
+  // app.component('comp', {
+  //   template:''
+  // })
+  app.mount('#app')
+</script>
